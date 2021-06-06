@@ -13,4 +13,12 @@ class MusementTest extends TestCase
 
         $this->assertInstanceOf('App\Classes\Musement', $mus);
     }
+
+    public function testGetCity()
+    {
+        $mus = new Musement();
+        $city = $mus->getCities();
+
+        $this->assertIsArray($city);
+    }
 }

@@ -1,1 +1,1 @@
-{"version":1,"defects":{"test\\MusementTest\\MusementTest::testNewInstance":4},"times":{"test\\MusementTest\\MusementTest::testNewInstance":0.041}}
+{"version":1,"defects":{"test\\MusementTest\\MusementTest::testNewInstance":4,"test\\MusementTest\\MusementTest::testGetCity":4},"times":{"test\\MusementTest\\MusementTest::testNewInstance":0.016,"test\\MusementTest\\MusementTest::testGetCity":0.036}}
