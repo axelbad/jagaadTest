@@ -15,4 +15,34 @@ class WeatherApiTest extends TestCase
         $logger = new Logger('test');
         self::$weatherApi = new WeatherApi($logger);
     }
+
+    public function testNewInstance()
+    {
+        $this->assertInstanceOf('App\Classes\WeatherApi', self::$weatherApi);
+    }
+
+    public function testGetWeatherWithRealCity()
+    {
+        self::$weatherApi->setCity('Palermo');
+
+        $this->assertIsObject(self::$weatherApi->getWeather('Palermo'));
+    }
+
+    public function testGetWeatherWithFakeCity()
+    {
+        self::$weatherApi->setCity('adsasdad');
+
+        $resp = self::$weatherApi->getWeather();
+
+        $this->assertEmpty($resp);
+    }
+
+    public function testGetWeatherWithEmptyCity()
+    {
+        self::$weatherApi->setCity('');
+
+        $resp = self::$weatherApi->getWeather('');
+
+        $this->assertEmpty($resp);
+    }
 }
