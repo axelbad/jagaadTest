@@ -36,6 +36,9 @@ class WeatherApi implements WeatherInterface
 
         $response = $curl->response;
 
+        // If a key error exists it means that something wrong is happened while retriving the forecat
+        // ie: wrong key, city not found.
+        // In that case error is logged.
         if ((!key_exists('error', $response)) && ($curl->getHttpStatusCode() == 200)) {
             return $response;
         } else {
