@@ -15,6 +15,12 @@ This extension is designed to use auto configuration search mechanism to apply r
 
 I tried to keep git history as clean as I could in order that peoples can understand the evolution of the project.
 
+App use Monolog as logging and logs are saved into
+
+> /logs
+
+with YYYY-MM-DD.log format
+
 ### How it works
 
 The application retrieve a list of cities from Musement API 
