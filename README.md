@@ -4,9 +4,16 @@
 ## Step 1 | Development
 
 To keep a consistent coding standard (PSR12) I used PHP_CodeSniffer
+
+> https://github.com/squizlabs/PHP_CodeSniffer
+
 in a combination with Visual Studio Code plugin.
 
+> https://marketplace.visualstudio.com/items?itemName=ikappas.phpcs
+
 This extension is designed to use auto configuration search mechanism to apply rulesets to files. 
+
+I tried to keep git history as clean as I could in order that peoples can understand the evolution of the project.
 
 ### How it works
 
