@@ -3,6 +3,16 @@
 require __DIR__ . '/vendor/autoload.php';
 
 use App\Classes\Init;
+
+$init = new Init();
+$cities_forecast = $init->getCityForecast();
+
+$isCli = false;
+if ($init->isCli()) {
+    echo $cities_forecast;
+    die();
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,14 +26,7 @@ use App\Classes\Init;
 
 <body>
 <?php
-
-$init = new Init();
-$forecast_cities = $init->getCityForecast();
-
-foreach ($forecast_cities as $forecast_city) {
-        echo 'Processed city ' . $forecast_city['city'] . ' | ';
-        echo $forecast_city['today_forecast'] . ' - ' . $forecast_city['tomorrow_forecast'] . '<br><br>';
-}
+    echo $cities_forecast;
 ?>
 </body>
 

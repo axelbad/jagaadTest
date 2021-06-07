@@ -18,6 +18,7 @@ class Init
     private $musement;
     private $weatherApi;
     private $logger;
+    private $eol = '<br>';
 
     public function __construct()
     {
@@ -26,6 +27,7 @@ class Init
 
         $this->musement = new Musement();
         $this->weatherApi = new WeatherApi($this->logger);
+        $this->setEol();
     }
 
     public function getCityForecast()
@@ -34,19 +36,35 @@ class Init
         $forecast_city = [];
         $i = 0;
 
+        $cities_forecast = "";
         foreach ($cities as $city) {
             $weahter = new Weather($this->weatherApi, $city);
             $wheater_data = $weahter->getWeather();
 
             if (!empty($wheater_data)) {
-                $forecast_city[$i]['city'] = $wheater_data['city'];
-                $forecast_city[$i]['today_forecast'] = $wheater_data['today_forecast'];
-                $forecast_city[$i]['tomorrow_forecast'] = $wheater_data['tomorrow_forecast'];
-
-                $i++;
+                $cities_forecast .= 'Processed city ' . $wheater_data['city'] . ' | ';
+                $cities_forecast .= $wheater_data['today_forecast'] . ' - ' . $wheater_data['tomorrow_forecast'];
+                $cities_forecast .= $this->eol;
             }
         }
 
-        return $forecast_city;
+        return $cities_forecast;
+    }
+
+    // Detect if php is running from cli
+    public function isCli()
+    {
+        if (empty($_SERVER['REMOTE_ADDR']) and !isset($_SERVER['HTTP_USER_AGENT']) and count($_SERVER['argv']) > 0) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public function setEol()
+    {
+        if ($this->isCli()) {
+            $this->eol = PHP_EOL;
+        }
     }
 }
