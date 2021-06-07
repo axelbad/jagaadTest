@@ -51,7 +51,7 @@ class Init
     public function __construct()
     {
         $this->logger = new Logger('main');
-        $this->logger->pushHandler(new StreamHandler(__DIR__ . '/logs/' . date("Y-m-d") . '.log', Logger::DEBUG));
+        $this->logger->pushHandler(new StreamHandler('logs/' . date("Y-m-d") . '.log', Logger::DEBUG));
 
         $this->musement = new Musement();
         $this->weatherApi = new WeatherApi($this->logger);
