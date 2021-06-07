@@ -18,10 +18,10 @@ I tried to keep git history as clean as I could in order that peoples can unders
 ### How it works
 
 The application retrieve a list of cities from Musement API 
-and for each of them try to get the forecast for today and tomorrow date
-using the WeatherAPI. 
+and for each of them try to get the forecast for today and tomorrow
+using WeatherAPI. 
 
-The resuls it printed using a basic HTML page (index.php) in the form:
+The result is print out using a basic HTML page (index.php) in the form:
 > "Processed city [city name] | [weather today] - [wheather tomorrow]"
 
 #### PHPUnit
